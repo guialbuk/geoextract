@@ -1,7 +1,14 @@
 # frozen_string_literal: true
 
 RSpec.describe Geoextract::ImageFinder do
-  describe 'find files' do
+  describe 'find images' do
+    let(:relative_path) { 'spec/support/images' }
+
+    it 'from relative path' do
+      expect(described_class.new(relative_path).find_recursively.count).
+        to eq(5)
+    end
+
     it 'from absolute path' do
       absolute_path = File.expand_path('../support/images', __dir__)
 
@@ -9,11 +16,14 @@ RSpec.describe Geoextract::ImageFinder do
         to eq(5)
     end
 
-    it 'from relative path' do
-      relative_path = 'spec/support/images'
+    it 'includes image files' do
+      expect(described_class.new(relative_path).find_recursively).
+        to include(/\.jpg/)
+    end
 
-      expect(described_class.new(relative_path).find_recursively.count).
-        to eq(5)
+    it 'excludes non-image files' do
+      expect(described_class.new(relative_path).find_recursively).
+        not_to include(/\.txt/)
     end
   end
 end

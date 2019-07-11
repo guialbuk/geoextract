@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'find'
+require 'mime/types'
 require 'optparse'
 
 require 'geoextract/argument_parser'

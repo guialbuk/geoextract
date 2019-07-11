@@ -9,8 +9,7 @@ module Geoextract
     def find_recursively
       Find.
         find(absolute_path).
-        reject(&method(:directory?)).
-        select(&method(:image_extension))
+        select(&method(:image?))
     end
 
     private
@@ -19,12 +18,11 @@ module Geoextract
       File.expand_path(@directory)
     end
 
-    def directory?(file)
-      File.directory?(file)
-    end
-
-    def image_extension(file)
-      file.match(/(jpg|jpeg)\z/i)
+    def image?(file)
+      MIME::Types.
+        type_for(file).
+        map(&:media_type).
+        include?('image')
     end
   end
 end
