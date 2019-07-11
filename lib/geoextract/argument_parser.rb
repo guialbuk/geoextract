@@ -16,7 +16,10 @@ module Geoextract
       end
 
       def default_options
-        { format: 'csv' }
+        {
+          directory: '.',
+          format: 'csv'
+        }
       end
 
       def options
@@ -30,10 +33,18 @@ module Geoextract
           opts.on(
             '-f',
             '--format [FORMAT]',
-            'Output format [csv|html]',
+            'Output format [csv|html]. Default: csv',
             /csv|html/i
           ) do |format|
             options[:format] = format&.downcase
+          end
+
+          opts.on(
+            '-d',
+            '--directory [DIRECTORY]',
+            'Directory to recursively search for images. Default: current directory'
+          ) do |directory|
+            options[:directory] = directory
           end
         end.parse!
       end
