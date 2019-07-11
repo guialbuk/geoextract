@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 require 'bundler/setup'
+
+require 'simplecov'
+SimpleCov.start
+
 require 'geoextract'
 
 RSpec.configure do |config|
