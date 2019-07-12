@@ -17,7 +17,6 @@ module Geoextract
             gps_data
           )
         )
-
       end
 
       private
@@ -38,7 +37,6 @@ module Geoextract
 
       def gps_data
         ::Exif::Data.new(file)[:gps]
-
       rescue ::Exif::NotReadable
         {}
       end
