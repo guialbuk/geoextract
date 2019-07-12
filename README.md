@@ -2,17 +2,18 @@
 
 [![CircleCI](https://circleci.com/gh/guialbuk/geoextract.svg?style=svg)](https://circleci.com/gh/guialbuk/geoextract)
 
-Welcome to `geoextract`! This tool ecursively extracts EXIF GPS data from images and outputs to CSV and HTML
+Welcome to `geoextract`! This tool recursively extracts EXIF GPS data from images and outputs to CSV and HTML
 
 ## Installation
 
-1. geoextract` uses the `exif` gem written in C, which depends on `libexif`. To install `libexif`: 
+1. `geoextract` uses the `exif`, a gem written in C that depends on `libexif`. To install `libexif`: 
 
 ```bash
 brew install libexif             # Homebrew
 sudo apt-get install libexif-dev # APT
 sudo yum install libexif-devel   # CentOS
  ```
+ 
 [source](https://github.com/tonytonyjan/exif#installation)
 
 
@@ -31,6 +32,34 @@ Usage: geoextract [options]
     -d, --directory [DIRECTORY]      Directory to recursively search for images
                                      Default: current directory
 ```
+
+`geoextract` is a UNIX-style tool, so it outputs to `stdout` do you can grep it or redirect the output to files.
+
+Prints GPS data in CSV format for images in the current directory and all subdirectories:
+```bash
+  geoextract
+```
+
+Writes the CSV output into a file:
+```bash
+  geoextract > output.csv
+```
+
+Writes the HTML output into a file:
+```bash
+  geoextract --format html > output.html
+```
+
+Extracts data from images in the storage directory and its subdirectories:
+```bash
+  geoextract --directory storage
+```
+
+## Implementation details
+  - Displays the image path and the main GPS data first
+  - Detects images by MIME-type
+  - Handles images without EXIF data
+  - Converts data written in `Rational` numbers to more user-friendly formats.
 
 ## Development
 
