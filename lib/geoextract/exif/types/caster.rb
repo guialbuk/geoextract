@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'geoextract/exif/types/rational_coordinates'
 require 'geoextract/exif/types/version'
 
 module Geoextract
@@ -7,6 +8,8 @@ module Geoextract
     module Type
       class Caster
         TYPES = {
+          gps_latitude:   RationalCoordinates,
+          gps_longitude:  RationalCoordinates,
           gps_version_id: Version
         }.freeze
 
