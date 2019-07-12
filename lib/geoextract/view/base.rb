@@ -17,6 +17,12 @@ module Geoextract
         @images = order_keys(images)
       end
 
+      # :nocov:
+      def render
+        raise NotImplementedError
+      end
+      # :nocov:
+
       private
 
       def order_keys(images)

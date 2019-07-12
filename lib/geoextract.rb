@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'csv'
 require 'exif'
 require 'find'
 require 'mime/types'
@@ -12,3 +13,4 @@ require 'geoextract/image_finder'
 require 'geoextract/launcher'
 require 'geoextract/version'
 require 'geoextract/view/base'
+require 'geoextract/view/csv'
