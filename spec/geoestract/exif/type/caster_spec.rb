@@ -35,8 +35,17 @@ RSpec.describe Geoextract::Exif::Type::Caster do
       it 'converts to Time' do
         time = [Rational(13, 1), Rational(31, 1), Rational(4400, 1)]
 
-        expect(cast(:gps_time_stamp, time).to_s).
+        expect(cast(:gps_time_stamp, time)).
           to eq('14:44:20')
+      end
+    end
+
+    context 'gps_altitude key' do
+      it 'converts to Float' do
+        altitude = Rational(15, 2)
+
+        expect(cast(:gps_altitude, altitude)).
+          to eq(7.5)
       end
     end
 
