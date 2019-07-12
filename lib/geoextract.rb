@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'csv'
+require 'erb'
 require 'exif'
 require 'find'
 require 'mime/types'

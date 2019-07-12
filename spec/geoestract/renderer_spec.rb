@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 RSpec.describe Geoextract::Renderer do
-  let(:images) { [] }
+  let(:images) { [image_path: 'foo.jpg'] }
 
-  describe '#render' do
+  describe 'render view' do
     context 'csv format' do
       it 'renders CSV view' do
         expect(Geoextract::View::CSV).
@@ -16,6 +16,21 @@ RSpec.describe Geoextract::Renderer do
           and_call_original
 
         described_class.new(images, :csv).render
+      end
+    end
+
+    context 'html format' do
+      it 'renders HTML view' do
+        expect(Geoextract::View::HTML).
+          to receive(:new).
+          with(images).
+          and_call_original
+
+        expect_any_instance_of(Geoextract::View::HTML).
+          to receive(:render).
+          and_call_original
+
+        described_class.new(images, :html).render
       end
     end
   end
