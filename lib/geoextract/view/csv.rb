@@ -12,16 +12,6 @@ module Geoextract
           end
         end
       end
-
-      private
-
-      def columns
-        @columns ||=
-          images.
-            map(&:keys).
-            flatten.
-            uniq
-      end
     end
   end
 end

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require 'awesome_print'
 require 'csv'
+require 'erb'
 require 'exif'
 require 'find'
 require 'mime/types'

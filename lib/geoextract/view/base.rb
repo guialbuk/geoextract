@@ -25,6 +25,21 @@ module Geoextract
 
       private
 
+      def columns
+        @columns ||=
+          images.
+            map(&:keys).
+            flatten.
+            uniq
+      end
+
+      def rows
+        @rows ||=
+          images.map do |image|
+            columns.map { |key| image[key] }
+          end
+      end
+
       def order_keys(images)
         images.map(&method(:order_image_keys))
       end
