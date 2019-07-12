@@ -12,15 +12,20 @@ module Geoextract
       end
 
       def extract_gps_data
-        cast_values(gps_data)
-      rescue ::Exif::NotReadable
-        {}
+        inject_image_path(
+          cast_values(
+            gps_data
+          )
+        )
+
       end
 
       private
 
-      def gps_data
-        ::Exif::Data.new(file)[:gps]
+      def inject_image_path(gps_hash)
+        gps_hash.merge(
+          image_path: @absolute_path
+        )
       end
 
       def cast_values(gps_data)
@@ -29,6 +34,13 @@ module Geoextract
             data[key] = Type::Caster.new(key, value).cast
           end
         end
+      end
+
+      def gps_data
+        ::Exif::Data.new(file)[:gps]
+
+      rescue ::Exif::NotReadable
+        {}
       end
 
       def file

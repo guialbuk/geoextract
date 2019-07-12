@@ -28,18 +28,19 @@ RSpec.describe Geoextract::Exif::Extractor do
       end
     end
 
-    context 'image empty GPS data' do
-      it 'returns an empty Hash' do
-        expect(extract_gps_data(empty_gps)).
-          to eq({})
-      end
+    it 'handles image with empty GPS data' do
+      expect(extract_gps_data(empty_gps)[:gps_latitude]).
+        to be_nil
     end
 
-    context 'image has no EXIF data' do
-      it 'returns an empty Hash' do
-        expect(extract_gps_data(no_exif)).
-          to eq({})
-      end
+    it 'handles image without EXIF data' do
+      expect(extract_gps_data(no_exif)[:gps_latitude]).
+        to be_nil
+    end
+
+    it 'injects image path' do
+      expect(extract_gps_data(no_exif)[:image_path]).
+        to eq(no_exif)
     end
   end
 end
