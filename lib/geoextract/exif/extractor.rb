@@ -3,6 +3,10 @@
 module Geoextract
   module Exif
     class Extractor
+      def self.extract_all(paths)
+        paths.map { |path| new(path).extract_gps_data }
+      end
+
       def initialize(absolute_path)
         @absolute_path = absolute_path
       end
