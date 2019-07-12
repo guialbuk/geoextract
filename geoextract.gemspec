@@ -31,6 +31,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'mime-types'
 
+  spec.add_development_dependency 'awesome_print',         '~> 1.8'
   spec.add_development_dependency 'bundler',               '~> 2.0'
   spec.add_development_dependency 'exif',                  '~> 2.2'
   spec.add_development_dependency 'rake',                  '~> 10.5'
