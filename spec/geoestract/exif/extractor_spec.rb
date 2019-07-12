@@ -25,15 +25,6 @@ RSpec.describe Geoextract::Exif::Extractor do
       it 'extract latitude' do
         expect(extract_gps_data(image_1)[:gps_latitude]).
           not_to be_nil
-
-        pp extract_gps_data(image_1)
-        pp extract_gps_data(image_2)
-        pp extract_gps_data(image_3)
-      end
-
-      it 'extract latitude' do
-        expect(extract_gps_data(image_1)[:gps_latitude]).
-          not_to be_nil
       end
     end
 

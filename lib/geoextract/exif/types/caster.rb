@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'geoextract/exif/types/rational_coordinates'
+require 'geoextract/exif/types/rational_time'
 require 'geoextract/exif/types/version'
 
 module Geoextract
@@ -10,6 +11,7 @@ module Geoextract
         TYPES = {
           gps_latitude:   RationalCoordinates,
           gps_longitude:  RationalCoordinates,
+          gps_time_stamp: RationalTime,
           gps_version_id: Version
         }.freeze
 
