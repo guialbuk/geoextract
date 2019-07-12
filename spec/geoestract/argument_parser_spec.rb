@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe Geoextract::ArgumentParser do
-  context '--format argument' do
+  describe '--format argument' do
     it 'parses --format' do
       stub_const('ARGV', ['--format=csv'])
 
@@ -38,7 +38,7 @@ RSpec.describe Geoextract::ArgumentParser do
     end
   end
 
-  context '--directory argument' do
+  describe '--directory argument' do
     it 'parses --directory' do
       stub_const('ARGV', ['--directory=images'])
 
