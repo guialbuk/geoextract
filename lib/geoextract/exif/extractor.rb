@@ -9,7 +9,6 @@ module Geoextract
 
       def extract_gps_data
         cast_values(gps_data)
-
       rescue ::Exif::NotReadable
         {}
       end
