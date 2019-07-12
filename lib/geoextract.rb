@@ -13,4 +13,3 @@ require 'geoextract/image_finder'
 require 'geoextract/launcher'
 require 'geoextract/renderer'
 require 'geoextract/version'
-
