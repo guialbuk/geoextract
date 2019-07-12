@@ -6,28 +6,28 @@ RSpec.describe Geoextract::ArgumentParser do
       stub_const('ARGV', ['--format=csv'])
 
       expect(described_class.extract_options[:format]).
-        to eq('csv')
+        to eq(:csv)
     end
 
     it 'parses --f' do
       stub_const('ARGV', ['--f=html'])
 
       expect(described_class.extract_options[:format]).
-        to eq('html')
+        to eq(:html)
     end
 
     it 'defaults to csv' do
       stub_const('ARGV', [])
 
       expect(described_class.extract_options[:format]).
-        to eq('csv')
+        to eq(:csv)
     end
 
     it 'is case insensitive' do
       stub_const('ARGV', ['--f=HTML'])
 
       expect(described_class.extract_options[:format]).
-        to eq('html')
+        to eq(:html)
     end
 
     it 'raises exception for invalid value' do

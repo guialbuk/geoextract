@@ -11,6 +11,6 @@ require 'geoextract/exif/extractor'
 require 'geoextract/exif/types/caster'
 require 'geoextract/image_finder'
 require 'geoextract/launcher'
+require 'geoextract/renderer'
 require 'geoextract/version'
-require 'geoextract/view/base'
-require 'geoextract/view/csv'
+

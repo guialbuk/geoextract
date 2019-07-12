@@ -18,7 +18,7 @@ module Geoextract
       def default_options
         {
           directory: '.',
-          format: 'csv'
+          format: :csv
         }
       end
 
@@ -36,7 +36,7 @@ module Geoextract
             'Output format [csv|html]. Default: csv',
             /csv|html/i
           ) do |format|
-            options[:format] = format&.downcase
+            options[:format] = format&.downcase&.to_sym
           end
 
           opts.on(

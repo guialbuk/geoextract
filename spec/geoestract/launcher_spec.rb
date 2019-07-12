@@ -21,4 +21,27 @@ RSpec.describe Geoextract::Launcher do
 
     described_class.launch
   end
+
+  it 'extracts gps data' do
+    expect(Geoextract::Exif::Extractor).
+      to receive(:extract_all).
+      and_call_original
+
+    described_class.launch
+  end
+
+  it 'generates render string' do
+    expect_any_instance_of(Geoextract::Renderer).
+      to receive(:render).
+      and_call_original
+
+    described_class.launch
+  end
+
+  it 'renders to STDOUT' do
+    expect(STDOUT).
+      to receive(:puts)
+
+    described_class.launch
+  end
 end
