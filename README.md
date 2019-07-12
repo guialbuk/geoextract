@@ -2,36 +2,38 @@
 
 [![CircleCI](https://circleci.com/gh/guialbuk/geoextract.svg?style=svg)](https://circleci.com/gh/guialbuk/geoextract)
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/geoextract`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Welcome to `geoextract`! This tool ecursively extracts EXIF GPS data from images and outputs to CSV and HTML
 
 ## Installation
 
-Add this line to your application's Gemfile:
+1. geoextract` uses the `exif` gem written in C, which depends on `libexif`. To install `libexif`: 
 
-```ruby
-gem 'geoextract'
+```bash
+brew install libexif             # Homebrew
+sudo apt-get install libexif-dev # APT
+sudo yum install libexif-devel   # CentOS
+ ```
+[source](https://github.com/tonytonyjan/exif#installation)
+
+
+2. To install this gem onto your local machine, run:
+
+```bash
+bundle exec rake install
 ```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install geoextract
 
 ## Usage
 
-TODO: Write usage instructions here
+```bash
+Usage: geoextract [options]
+    -f, --format [FORMAT]            Output format [csv|html]
+                                     Default: csv
+    -d, --directory [DIRECTORY]      Directory to recursively search for images
+                                     Default: current directory
+```
 
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
 To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/geoextract.
