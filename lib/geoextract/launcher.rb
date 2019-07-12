@@ -2,15 +2,25 @@
 
 module Geoextract
   class Launcher
-    def self.launch
-      options = ArgumentParser.extract_options
+    class << self
+      def launch
+        options = ArgumentParser.extract_options
+        images  = image_paths(options)
 
-      images =
+        puts extract_gps_data(images)
+      end
+
+      private
+
+      def image_paths(options)
         ImageFinder.
           new(options[:directory]).
           find_recursively
+      end
 
-      images.each { |i| puts i }
+      def extract_gps_data(images)
+        Exif::Extractor.extract_all(images)
+      end
     end
   end
 end
