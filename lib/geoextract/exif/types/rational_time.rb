@@ -5,12 +5,11 @@ module Geoextract
     module Type
       class RationalTime
         def self.cast(value)
-          float_time = RationalCoordinates.cast(value)
+          hours   = RationalCoordinates.cast(value)
+          minutes = (hours.modulo(1) * 60)
+          seconds = (minutes.modulo(1) * 60)
 
-          Time.
-            at(float_time).
-            utc.
-            iso8601
+          "#{hours.to_i}:#{minutes.to_i}:#{seconds.to_i}"
         end
       end
     end

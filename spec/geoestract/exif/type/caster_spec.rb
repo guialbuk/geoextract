@@ -33,10 +33,10 @@ RSpec.describe Geoextract::Exif::Type::Caster do
 
     context 'gps_time_stamp key' do
       it 'converts to Time' do
-        time = [Rational(0, 1), Rational(0, 1), Rational(0, 1)]
+        time = [Rational(13, 1), Rational(31, 1), Rational(4400, 1)]
 
         expect(cast(:gps_time_stamp, time).to_s).
-          to eq('1970-01-01T00:00:00Z')
+          to eq('14:44:20')
       end
     end
 
