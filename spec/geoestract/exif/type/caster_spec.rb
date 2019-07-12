@@ -39,5 +39,12 @@ RSpec.describe Geoextract::Exif::Type::Caster do
           to eq('1970-01-01T00:00:00Z')
       end
     end
+
+    context 'nil values' do
+      it 'does not convert' do
+        expect(cast(:gps_time_stamp, nil)).
+          to be_nil
+      end
+    end
   end
 end

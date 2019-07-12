@@ -21,6 +21,8 @@ module Geoextract
         end
 
         def cast
+          return unless @value
+
           klass = TYPES[@key]
 
           if klass
